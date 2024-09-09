@@ -11,6 +11,7 @@ LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_HEADER_LIBRARY)
 
+ifneq ($(TARGET_PROVIDES_AUDIO_HAL),true)
 include $(CLEAR_VARS)
 
 ifeq ($(call is-board-platform-in-list,$(LOCAL_AUDIO_SERVICE_64)), true)
@@ -130,31 +131,5 @@ endif
     LOCAL_SRC_FILES += audio_extn/Gef.cpp
 endif
 
-include $(BUILD_SHARED_LIBRARY)
-
-
-# Legacy USB AUDIO HAL
-ifneq ($(filter bengal,$(TARGET_BOARD_PLATFORM)),)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := audio.usb.$(TARGET_BOARD_PLATFORM)
-LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_MODULE_OWNER := qti
-LOCAL_VENDOR_MODULE := true
-
-LOCAL_SRC_FILES:= \
-        audio_usb_hal.c
-
-LOCAL_CFLAGS += \
-    -Wno-unused-parameter \
-
-LOCAL_SHARED_LIBRARIES := \
-     liblog \
-     libcutils \
-     libaudioutils \
-     libtinyalsa \
-     libalsautils
-
-LOCAL_HEADER_LIBRARIES += libhardware_headers
 include $(BUILD_SHARED_LIBRARY)
 endif
