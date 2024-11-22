@@ -181,6 +181,10 @@ PRODUCT_PACKAGES += QRD_acdb_cal.acdb
 PRODUCT_PACKAGES += QRD_workspaceFileXml.qwsp
 PRODUCT_PACKAGES += IDP_scuba_acdb_cal.acdb
 PRODUCT_PACKAGES += IDP_scuba_workspaceFileXml.qwsp
+ifeq ($(TARGET_HAS_QTI_OPTIMIZATIONS), true)
+PRODUCT_PACKAGES += IDP_scuba_qti_optimized_acdb_cal.acdb
+PRODUCT_PACKAGES += IDP_scuba_qti_optimized_workspaceFileXml.qwsp
+endif
 PRODUCT_PACKAGES += QRD_scuba_acdb_cal.acdb
 PRODUCT_PACKAGES += QRD_scuba_workspaceFileXml.qwsp
 PRODUCT_PACKAGES += fai_3.0.0_0.0_eai_1.00.pmd
