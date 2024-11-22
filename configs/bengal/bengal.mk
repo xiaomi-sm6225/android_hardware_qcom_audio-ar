@@ -158,8 +158,10 @@ PRODUCT_PACKAGES += ftm_test_config_bengal-qrd-snd-card
 PRODUCT_PACKAGES += ftm_test_config_bengal-idp-snd-card
 PRODUCT_PACKAGES += ftm_test_config_bengal-scubaidp-snd-card
 PRODUCT_PACKAGES += ftm_test_config_bengal-scubaqrd-snd-card
+ifneq ($(TARGET_HAS_QTI_OPTIMIZATIONS), true)
 PRODUCT_PACKAGES += audioadsprpcd
 PRODUCT_PACKAGES += vendor.qti.audio-adsprpc-service.rc
+endif
 ifneq ($(TARGET_BOARD_SUFFIX),_515_32go)
 PRODUCT_PACKAGES += android.hardware.audio.service_64
 PRODUCT_PACKAGES += android.hardware.audio.service_64.rc
